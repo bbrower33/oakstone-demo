@@ -344,6 +344,121 @@
         </section>
 
 
+        <!-- FEATURE -->
+
+        <section class="feature section">
+
+            <div class="container feature-grid">
+
+                <div class="feature-image">
+
+                    <img
+                        id="feature-spotlight"
+                        src="images/edging-2.JPG"
+                        alt="Oakstone project"
+                    >
+
+                    <div class="image-label">
+                        <span>Oakstone</span>
+                        <span id="feature-counter">01 / 04</span>
+                    </div>
+
+                    <div class="feature-controls" aria-label="Gallery controls">
+                        <button type="button" class="feature-control is-active" data-index="0">1</button>
+                        <button type="button" class="feature-control" data-index="1">2</button>
+                        <button type="button" class="feature-control" data-index="2">3</button>
+                        <button type="button" class="feature-control" data-index="3">4</button>
+                    </div>
+
+                </div>
+
+
+                <div class="feature-content">
+
+                    <p class="eyebrow dark">
+                        Our Approach
+                    </p>
+
+                    <h2>
+                        Built around
+                        <span>the property.</span>
+                    </h2>
+
+                    <p>
+                        Every property has its own character. We take the time
+                        to understand how a space is used before recommending
+                        the work it needs.
+                    </p>
+
+                    <p>
+                        The result is landscaping that feels natural to the
+                        property rather than something simply added on top of it.
+                    </p>
+
+                    <div class="feature-points">
+
+                        <div>
+                            <strong>01</strong>
+                            <span>Thoughtful planning</span>
+                        </div>
+
+                        <div>
+                            <strong>02</strong>
+                            <span>Quality workmanship</span>
+                        </div>
+
+                        <div>
+                            <strong>03</strong>
+                            <span>Consistent care</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <script>
+            const featureImages = [
+                'images/edging-2.JPG',
+                'images/tree-trimming-2.jpg',
+                'images/mulch-4.jpg',
+                'images/hedge-trimming-1.jpg'
+            ];
+
+            const featureSpotlight = document.getElementById('feature-spotlight');
+            const featureCounter = document.getElementById('feature-counter');
+            const featureControls = document.querySelectorAll('.feature-control');
+
+            if (featureSpotlight && featureCounter && featureControls.length) {
+                let currentFeatureIndex = 0;
+
+                function updateFeatureImage(index) {
+                    currentFeatureIndex = index;
+                    featureSpotlight.src = featureImages[index];
+                    featureCounter.textContent = `${String(index + 1).padStart(2, '0')} / 04`;
+
+                    featureControls.forEach((button, buttonIndex) => {
+                        button.classList.toggle('is-active', buttonIndex === index);
+                    });
+                }
+
+                featureControls.forEach((button) => {
+                    button.addEventListener('click', () => {
+                        updateFeatureImage(Number(button.dataset.index));
+                    });
+                });
+
+                setInterval(() => {
+                    const nextIndex = (currentFeatureIndex + 1) % featureImages.length;
+                    updateFeatureImage(nextIndex);
+                }, 2600);
+            }
+        </script>
+
+
         <!-- PROJECTS -->
 
         <section class="work section" id="work">
